@@ -1,0 +1,19 @@
+{
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-styled-components",
+          {
+            "displayName": true,
+            "ssr": true,
+            "fileName": true,
+            "minify": true,
+            "transpileTemplateLiterals": true,
+            "pure": true
+          }
+        ]
+      ]
+    }
+  }
+}
