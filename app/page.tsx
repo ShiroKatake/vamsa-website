@@ -1,6 +1,6 @@
 'use client';
-import {Button} from '@/components/Button/Button';
+import {NavBar} from '@/components/NavBar/NavBar';
 
 export default function Home() {
-  return <Button>Button Text</Button>;
+  return <NavBar />;
 }
