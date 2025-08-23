@@ -1,4 +1,4 @@
-import {HOMEPAGE_FRAGMENT} from '../fragments/homepage';
+import {HOMEPAGE_FRAGMENT} from './fragments';
 
 export const HOMEPAGE_QUERY = /* GraphQL */ `
   query {

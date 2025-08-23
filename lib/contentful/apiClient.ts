@@ -1,5 +1,5 @@
 import {minifyGraphQLQuery} from '../utils/api/minifyGraphQLQuery';
-import {HOMEPAGE_QUERY} from './queries/homepage';
+import {HOMEPAGE_QUERY} from './queries';
 
 export const apiClient = () => {
   const apiCall = async (preview = false, query: string) => {
