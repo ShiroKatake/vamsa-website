@@ -20,7 +20,7 @@ const style = css`
 
   h2 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 700;
   }
 
