@@ -1,18 +1,27 @@
 import styled from 'styled-components';
 
 export const StyledNavBar = styled.nav`
+  height: min-content;
+
   ul {
     display: flex;
     align-items: center;
     gap: 2rem;
     list-style: none;
     margin: 0;
-    padding: 0.5em 1em;
+    padding: 0.75em 1em;
     background-color: ${({theme}) => theme.colors.background2};
   }
 
   li.logo {
-    width: 2.6875rem;
+    align-self: stretch;
+
+    svg {
+      width: auto;
+      height: 100%;
+    }
+
+    height: 2.25rem;
   }
 
   li:not(.button):not(.logo) {

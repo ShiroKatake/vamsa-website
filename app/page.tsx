@@ -1,6 +1,7 @@
-'use client';
-import {NavBar} from '@/components/NavBar/NavBar';
-
 export default function Home() {
-  return <NavBar />;
+  return (
+    <main>
+      <h1 className="title">VAMSA</h1>
+    </main>
+  );
 }
