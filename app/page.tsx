@@ -7,6 +7,7 @@ import {
   IntroText,
   StyledSlideshow,
   SlideshowContainer,
+  OrgFullName,
 } from './Page.styled';
 import {HomepageEntry} from '@/lib/contentful/types';
 
@@ -22,7 +23,9 @@ export default async function Home() {
               VAMSA
             </h1>
             <IntroText>
-              <p>Vietnamese Australian Mutual Association of NSW</p>
+              <OrgFullName>
+                Vietnamese Australian Mutual Association of NSW
+              </OrgFullName>
               <RichTextRenderer richTextField={pageData?.introText} />
             </IntroText>
           </Text>

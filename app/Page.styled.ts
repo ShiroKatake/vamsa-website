@@ -21,6 +21,14 @@ export const Text = styled.div`
 
 export const IntroText = styled.div`
   font-size: 1.25rem;
+
+  p {
+    font-family: var(--font-inria-serif);
+  }
+`;
+
+export const OrgFullName = styled.p`
+  font-style: italic;
 `;
 
 export const StyledSlideshow = styled(Slideshow)`
