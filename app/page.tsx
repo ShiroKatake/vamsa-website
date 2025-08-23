@@ -3,7 +3,7 @@ import {apiClient} from '@/lib/contentful/apiClient';
 import {IntroSection, IntroText} from './Page.styled';
 
 export default async function Home() {
-  const pageData = await apiClient().getHomepage();
+  const pageData = await apiClient.getHomepage();
 
   return (
     <main>

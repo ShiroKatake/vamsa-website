@@ -1,13 +1,15 @@
-import {HOMEPAGE_FRAGMENT} from './fragments';
+import {FragmentNames} from './fragments';
+import {Fragment} from './types';
 
-export const HOMEPAGE_QUERY = /* GraphQL */ `
-  query {
-    homepageCollection(limit: 1) {
-      items {
-        ...Homepage
+export const HOMEPAGE_QUERY: Fragment = {
+  fragment: /* GraphQL */ `
+    query {
+      homepageCollection(limit: 1) {
+        items {
+          ...${FragmentNames.Homepage}
+        }
       }
     }
-  }
-
-  ${HOMEPAGE_FRAGMENT}
-`;
+  `,
+  dependencies: [FragmentNames.Homepage],
+};

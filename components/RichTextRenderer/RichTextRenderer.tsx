@@ -1,7 +1,7 @@
 import {
   ContentfulEntryGeneric,
   ContentfulRichTextField,
-} from '@/lib/contentful/type';
+} from '@/lib/contentful/types';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import type {Options} from '@contentful/rich-text-react-renderer';
 import {BLOCKS, INLINES} from '@contentful/rich-text-types';

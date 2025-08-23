@@ -1,4 +1,11 @@
 import type {Document} from '@contentful/rich-text-types';
+import {FragmentNames} from './fragments';
+
+export type Fragment = {
+  fragment: string;
+  dependencies?: FragmentNames[];
+};
+
 export type Sys = {
   id: string;
   firstPublishedAt?: string;
