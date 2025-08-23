@@ -2,6 +2,12 @@ import type {Metadata} from 'next';
 import {Inter} from 'next/font/google';
 import {StyledComponentsRegistry} from '@/lib/styled-components/StyledComponentsRegistry';
 import {ClientLayout} from '@/lib/styled-components/ClientLayout';
+import localFont from 'next/font/local';
+
+const thuPhapFont = localFont({
+  src: './fonts/thu-phap.ttf',
+  variable: '--font-thu-phap',
+});
 
 const inter = Inter({
   variable: '--font-inter',
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}`}>
+      <body className={`${inter.variable} ${thuPhapFont.variable}`}>
         <StyledComponentsRegistry>
           <ClientLayout>{children}</ClientLayout>
         </StyledComponentsRegistry>

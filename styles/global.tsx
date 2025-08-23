@@ -11,6 +11,11 @@ const style = css`
     text-decoration: none;
   }
 
+  h1.title {
+    font-size: 4rem;
+    font-family: var(--font-thu-phap);
+  }
+
   * {
     font-family: var(--font-inter);
   }
