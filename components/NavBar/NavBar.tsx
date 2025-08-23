@@ -19,7 +19,7 @@ export const NavBar: React.FC = () => {
   return (
     <StyledNavBar>
       <ul>
-        <li className="logo">
+        <li className="logo" aria-hidden>
           <Link href="/" aria-label="Homepage">
             <Logo />
           </Link>

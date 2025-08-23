@@ -1,10 +1,22 @@
 import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
+import {Inter, Inria_Serif} from 'next/font/google';
 import {StyledComponentsRegistry} from '@/lib/styled-components/StyledComponentsRegistry';
 import {ClientLayout} from '@/lib/styled-components/ClientLayout';
+import localFont from 'next/font/local';
+
+const thuPhapFont = localFont({
+  src: './fonts/thu-phap.ttf',
+  variable: '--font-thu-phap',
+});
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+});
+
+const inriaSerif = Inria_Serif({
+  variable: '--font-inria-serif',
+  weight: ['400'],
   subsets: ['latin'],
 });
 
@@ -20,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable}`}>
+      <body
+        className={`${inter.variable} ${thuPhapFont.variable} ${inriaSerif.variable}`}
+      >
         <StyledComponentsRegistry>
           <ClientLayout>{children}</ClientLayout>
         </StyledComponentsRegistry>
