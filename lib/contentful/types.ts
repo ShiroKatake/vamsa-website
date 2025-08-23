@@ -14,8 +14,8 @@ export type Sys = {
 
 export type AssetBlock = {
   sys: Sys;
-  title?: string;
-  description: string;
+  title: string;
+  description?: string;
   contentType?: string;
   url: string;
   width: number;
@@ -38,4 +38,15 @@ export type ContentfulRichTextField = {
       block?: Array<ContentfulEntryGeneric>;
     };
   };
+};
+
+export type HomepageEntry = {
+  entryTitle: string;
+  introText: ContentfulRichTextField;
+  slideshowCollection: {
+    items: Array<AssetBlock>;
+  };
+  eventsSectionTitle: string;
+  activitiesSectionTitle: string;
+  socialSectionTitle: string;
 };

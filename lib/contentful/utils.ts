@@ -15,6 +15,22 @@ export const minifyGraphQLQuery = <T extends string>(string: T): T => {
     .trim() as T;
 };
 
+export const contentfulLoader = ({
+  src,
+  width,
+  height,
+}: {
+  src: string;
+  width?: number;
+  height?: number;
+}) => {
+  const url = new URL(src);
+  url.searchParams.set('fm', 'avif');
+  if (width) url.searchParams.set('w', width.toString());
+  if (height) url.searchParams.set('h', height.toString());
+  return url.href;
+};
+
 export const fragmentResolver = (fragment: Fragment) => {
   return `
   ${fragment.fragment}
