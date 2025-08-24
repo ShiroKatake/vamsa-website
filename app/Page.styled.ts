@@ -12,6 +12,7 @@ export const Intro = styled.div`
   flex-direction: column;
   align-items: center;
   min-width: 50%;
+  padding: 3rem 0;
 `;
 
 export const StyledSection = styled.section`
