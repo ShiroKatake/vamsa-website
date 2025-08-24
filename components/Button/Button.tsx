@@ -10,7 +10,7 @@ interface ButtonProps {
 export const Button: React.FC<ButtonProps> = ({children, onClick, href}) => {
   const tag = href ? 'a' : 'button';
   return (
-    <StyledButton as={tag} onClick={onClick}>
+    <StyledButton as={tag} onClick={onClick} href={href ?? '#'}>
       {children}
     </StyledButton>
   );

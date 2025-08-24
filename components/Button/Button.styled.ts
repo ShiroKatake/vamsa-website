@@ -1,6 +1,7 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Link)`
   display: inline-block;
   border: none;
   border-radius: 0.25em;

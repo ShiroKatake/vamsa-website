@@ -8,14 +8,18 @@ import {
   StyledSlideshow,
   SlideshowContainer,
   OrgFullName,
+  EventCardGrid,
+  SectionTitle,
+  StyledSection,
 } from './Page.styled';
 import {HomepageEntry} from '@/lib/contentful/types';
 import {EventStatus, getEvents} from '@/lib/eventbrite/apiClient';
+import {EventCard} from '@/components/EventCard/EventCard';
 
 export default async function Home() {
   const pageData: HomepageEntry = await apiClient.getHomepage();
   const events = await getEvents(EventStatus.DRAFT);
-  console.log(events[0].name.html);
+  console.log(events[0]);
   return (
     <main>
       <IntroSection>
@@ -36,9 +40,41 @@ export default async function Home() {
           <StyledSlideshow images={pageData?.slideshowCollection?.items} />
         </SlideshowContainer>
       </IntroSection>
-      <h2>{pageData?.eventsSectionTitle}</h2>
-      <h2>{pageData?.activitiesSectionTitle}</h2>
-      <h2>{pageData?.socialSectionTitle}</h2>
+      <StyledSection>
+        <SectionTitle>{pageData?.eventsSectionTitle}</SectionTitle>
+        <EventCardGrid>
+          <EventCard
+            url={events[0].url}
+            name={events[0].name.html}
+            imageSrc={events[0].logo.url}
+            description={events[0].description.html}
+          />{' '}
+          <EventCard
+            url={events[0].url}
+            name={events[0].name.html}
+            imageSrc={events[0].logo.url}
+            description={events[0].description.html}
+          />{' '}
+          <EventCard
+            url={events[0].url}
+            name={events[0].name.html}
+            imageSrc={events[0].logo.url}
+            description={events[0].description.html}
+          />
+          <EventCard
+            url={events[0].url}
+            name={events[0].name.html}
+            imageSrc={events[0].logo.url}
+            description={events[0].description.html}
+          />
+        </EventCardGrid>
+      </StyledSection>
+      <StyledSection>
+        <SectionTitle>{pageData?.activitiesSectionTitle}</SectionTitle>
+      </StyledSection>
+      <StyledSection>
+        <SectionTitle>{pageData?.socialSectionTitle}</SectionTitle>
+      </StyledSection>
     </main>
   );
 }

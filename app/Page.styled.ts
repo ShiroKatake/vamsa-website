@@ -14,6 +14,17 @@ export const Intro = styled.div`
   min-width: 50%;
 `;
 
+export const StyledSection = styled.section`
+  max-width: 75rem;
+  padding: 3rem 0;
+  margin: 0 auto;
+`;
+
+export const SectionTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
 export const Text = styled.div`
   margin: auto;
   max-width: 70%;
@@ -38,4 +49,11 @@ export const StyledSlideshow = styled(Slideshow)`
 
 export const SlideshowContainer = styled.div`
   min-width: 50%;
+`;
+
+export const EventCardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
+  gap: 1rem;
 `;
