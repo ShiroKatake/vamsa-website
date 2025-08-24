@@ -10,10 +10,12 @@ import {
   OrgFullName,
 } from './Page.styled';
 import {HomepageEntry} from '@/lib/contentful/types';
+import {EventStatus, getEvents} from '@/lib/eventbrite/apiClient';
 
 export default async function Home() {
   const pageData: HomepageEntry = await apiClient.getHomepage();
-
+  const events = await getEvents(EventStatus.DRAFT);
+  console.log(events[0].name.html);
   return (
     <main>
       <IntroSection>
