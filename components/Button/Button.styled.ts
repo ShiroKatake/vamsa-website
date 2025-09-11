@@ -11,4 +11,8 @@ export const StyledButton = styled(Link)`
   font-weight: 700;
   font-size: 1rem;
   line-height: 0.72;
+
+  &:hover {
+    color: ${({theme}) => theme.colors.white};
+  }
 `;
