@@ -10,16 +10,16 @@ import {
   OrgFullName,
   EventCardGrid,
   SectionTitle,
-  StyledSection,
 } from './Page.styled';
 import {HomepageEntry} from '@/lib/contentful/types';
 import {EventStatus, getEvents} from '@/lib/eventbrite/apiClient';
 import {EventCard} from '@/components/EventCard/EventCard';
+import {AltColorSection, Section} from '@/components/Section/Section';
 
 export default async function Home() {
   const pageData: HomepageEntry = await apiClient.getHomepage();
   const events = await getEvents(EventStatus.DRAFT);
-  console.log(events[0]);
+
   return (
     <main>
       <IntroSection>
@@ -40,7 +40,7 @@ export default async function Home() {
           <StyledSlideshow images={pageData?.slideshowCollection?.items} />
         </SlideshowContainer>
       </IntroSection>
-      <StyledSection>
+      <Section>
         <SectionTitle>{pageData?.eventsSectionTitle}</SectionTitle>
         <EventCardGrid>
           <EventCard
@@ -68,13 +68,13 @@ export default async function Home() {
             description={events[0].description.html}
           />
         </EventCardGrid>
-      </StyledSection>
-      <StyledSection>
+      </Section>
+      <AltColorSection>
         <SectionTitle>{pageData?.activitiesSectionTitle}</SectionTitle>
-      </StyledSection>
-      <StyledSection>
+      </AltColorSection>
+      <Section>
         <SectionTitle>{pageData?.socialSectionTitle}</SectionTitle>
-      </StyledSection>
+      </Section>
     </main>
   );
 }

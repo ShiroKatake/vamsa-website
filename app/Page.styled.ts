@@ -15,12 +15,6 @@ export const Intro = styled.div`
   padding: 3rem 0;
 `;
 
-export const StyledSection = styled.section`
-  max-width: 75rem;
-  padding: 3rem 0;
-  margin: 0 auto;
-`;
-
 export const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 2rem;
@@ -57,4 +51,5 @@ export const EventCardGrid = styled.div`
   grid-template-columns: repeat(auto-fit, 20rem);
   justify-content: center;
   gap: 1rem;
+  padding: 0 3rem;
 `;
