@@ -21,6 +21,10 @@ export const EventDetails = styled.div`
   flex-direction: column;
   padding: 1.25rem;
 
+  :not(${StyledButton}) {
+    color: ${({theme}) => theme.colors.white};
+  }
+
   h3 {
     margin: 0;
   }

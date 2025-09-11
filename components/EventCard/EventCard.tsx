@@ -25,7 +25,9 @@ export const EventCard = ({
       <EventDetails>
         <h3>{name}</h3>
         <p>{description}</p>
-        <Button href={url}>Book a spot</Button>
+        <Button href={url} target="_blank">
+          Book a spot
+        </Button>
       </EventDetails>
     </StyledEventCard>
   );
