@@ -17,6 +17,7 @@ export const Intro = styled.div`
 export const Text = styled.div`
   margin: auto;
   max-width: 70%;
+  padding: 2rem 0;
 `;
 
 export const IntroText = styled.div`

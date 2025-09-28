@@ -41,12 +41,12 @@ export type ContentfulRichTextField = {
 };
 
 export type HomepageEntry = {
-  entryTitle: string;
-  introText: ContentfulRichTextField;
-  slideshowCollection: {
+  entryTitle?: string;
+  introText?: ContentfulRichTextField;
+  slideshowCollection?: {
     items: Array<AssetBlock>;
   };
-  eventsSectionTitle: string;
-  activitiesSectionTitle: string;
-  socialSectionTitle: string;
+  eventsSectionTitle?: string;
+  activitiesSectionTitle?: string;
+  socialSectionTitle?: string;
 };

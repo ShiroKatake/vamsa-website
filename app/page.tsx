@@ -9,10 +9,13 @@ import {
   SlideshowContainer,
   OrgFullName,
 } from './Page.styled';
-import {HomepageEntry} from '@/lib/contentful/types';
 
 export default async function Home() {
-  const pageData: HomepageEntry = await apiClient.getHomepage();
+  const pageData = await apiClient.getHomepage();
+
+  if (!pageData) {
+    return null;
+  }
 
   return (
     <main>
@@ -26,13 +29,17 @@ export default async function Home() {
               <OrgFullName>
                 Vietnamese Australian Mutual Association of NSW
               </OrgFullName>
-              <RichTextRenderer richTextField={pageData?.introText} />
+              {pageData?.introText ? (
+                <RichTextRenderer richTextField={pageData?.introText} />
+              ) : null}
             </IntroText>
           </Text>
         </Intro>
-        <SlideshowContainer>
-          <StyledSlideshow images={pageData?.slideshowCollection?.items} />
-        </SlideshowContainer>
+        {pageData?.slideshowCollection?.items ? (
+          <SlideshowContainer>
+            <StyledSlideshow images={pageData?.slideshowCollection?.items} />
+          </SlideshowContainer>
+        ) : null}
       </IntroSection>
       <h2>{pageData?.eventsSectionTitle}</h2>
       <h2>{pageData?.activitiesSectionTitle}</h2>
