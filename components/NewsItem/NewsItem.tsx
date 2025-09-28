@@ -4,35 +4,50 @@ import React from 'react';
 import {
   StyledDate,
   StyledDescription,
+  StyledLink,
   StyledNewsItem,
 } from './NewsItems.styled';
 import Link from 'next/link';
+import {NewsEntry} from '@/lib/contentful/types';
+import {contentfulLoader, dateConverter} from '@/lib/contentful/utils';
 
-export const NewsItem = () => {
+export const NewsItem = ({
+  title,
+  slug,
+  summary,
+  image,
+  datePublished,
+}: NewsEntry) => {
+  const date = dateConverter(datePublished ?? '');
   return (
     <StyledNewsItem>
-      <Image
-        src="https://picsum.photos/139/139"
-        alt=""
-        width={139}
-        height={139}
-      />
+      {image?.url ? (
+        <Link href="#" role="presentation" tabIndex={-1}>
+          <Image
+            src={image?.url}
+            alt={image?.description ?? image?.title ?? ''}
+            width={139}
+            height={139}
+            loader={() =>
+              contentfulLoader({
+                src: image?.url,
+                width: 139,
+                height: 139,
+                fit: 'fill',
+                focus: 'center',
+              })
+            }
+          />
+        </Link>
+      ) : (
+        <div></div>
+      )}
       <div>
         <h2>
-          <Link href="#">News Heading</Link>
+          <StyledLink href={`/news/${slug}`}>{title}</StyledLink>
         </h2>
-        <StyledDate>19/05/2025</StyledDate>
-        <StyledDescription>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </StyledDescription>
+        <StyledDate>{date}</StyledDate>
+        <StyledDescription>{summary}</StyledDescription>
       </div>
     </StyledNewsItem>
   );

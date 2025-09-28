@@ -7,26 +7,30 @@ import {
   PageContainer,
 } from './Page.styled';
 import {NewsItem} from '@/components/NewsItem/NewsItem';
+import {apiClient} from '@/lib/contentful/apiClient';
 
 export default async function Page() {
+  const allNews = await apiClient.getAllNews();
+
+  const newsSortedByDate = allNews?.sort((a, b) => {
+    const dateA = new Date(a.datePublished ?? '');
+    const dateB = new Date(b.datePublished ?? '');
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  if (!newsSortedByDate) {
+    return null;
+  }
+
   return (
     <PageContainer>
       <Background>
         <NewsContainer>
           <h1>News in September</h1>
           <NewsList>
-            <li>
-              <NewsItem />
-            </li>
-            <li>
-              <NewsItem />
-            </li>
-            <li>
-              <NewsItem />
-            </li>
-            <li>
-              <NewsItem />
-            </li>
+            {newsSortedByDate.map((newsItem) => (
+              <NewsItem key={newsItem.sys.id} {...newsItem} />
+            ))}
           </NewsList>
         </NewsContainer>
         <OtherNewsContainer>

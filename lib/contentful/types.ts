@@ -50,3 +50,13 @@ export type HomepageEntry = {
   activitiesSectionTitle?: string;
   socialSectionTitle?: string;
 };
+
+export type NewsEntry = {
+  sys: Sys;
+  title?: string;
+  slug?: string;
+  datePublished?: string;
+  image?: AssetBlock;
+  summary?: string;
+  content?: ContentfulRichTextField;
+};

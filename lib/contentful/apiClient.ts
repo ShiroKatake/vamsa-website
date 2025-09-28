@@ -1,5 +1,6 @@
 import {fragmentResolver, minifyGraphQLQuery} from './utils';
-import {HOMEPAGE_QUERY} from './queries';
+import {ALL_NEWS_QUERY, HOMEPAGE_QUERY} from './queries';
+import {HomepageEntry, NewsEntry} from './types';
 
 const apiCall = async (preview = false, query: string) => {
   const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`;
@@ -30,11 +31,18 @@ const apiCall = async (preview = false, query: string) => {
 };
 
 export const apiClient = {
-  getHomepage: async (preview = false) => {
+  getHomepage: async (preview = false): Promise<HomepageEntry | null> => {
     const {homepageCollection} = await apiCall(
       preview,
       fragmentResolver(HOMEPAGE_QUERY),
     );
     return homepageCollection?.items?.[0] ?? null;
+  },
+  getAllNews: async (preview = false): Promise<NewsEntry[] | null> => {
+    const {newsCollection} = await apiCall(
+      preview,
+      fragmentResolver(ALL_NEWS_QUERY),
+    );
+    return newsCollection?.items ?? null;
   },
 };
