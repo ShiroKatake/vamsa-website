@@ -1,8 +1,8 @@
-import {fragmentResolver, minifyGraphQLQuery} from './utils';
-import {ALL_NEWS_QUERY, HOMEPAGE_QUERY} from './queries';
+import {fragmentResolver, minifyGraphQLQuery} from './utils.server';
+import {ALL_NEWS_QUERY, HOMEPAGE_QUERY, NEWS_PAGE} from './queries';
 import {HomepageEntry, NewsEntry} from './types';
 
-const apiCall = async (preview = false, query: string) => {
+const apiCall = async (preview = false, query: string, variables?: any) => {
   const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`;
   const accessToken =
     preview && process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
@@ -14,7 +14,10 @@ const apiCall = async (preview = false, query: string) => {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({query: minifyGraphQLQuery(query)}),
+    body: JSON.stringify({
+      query: minifyGraphQLQuery(query),
+      variables,
+    }),
   };
 
   try {
@@ -32,17 +35,21 @@ const apiCall = async (preview = false, query: string) => {
 
 export const apiClient = {
   getHomepage: async (preview = false): Promise<HomepageEntry | null> => {
-    const {homepageCollection} = await apiCall(
-      preview,
-      fragmentResolver(HOMEPAGE_QUERY),
-    );
-    return homepageCollection?.items?.[0] ?? null;
+    const result = await apiCall(preview, fragmentResolver(HOMEPAGE_QUERY));
+    return result?.homepageCollection?.items?.[0] ?? null;
   },
   getAllNews: async (preview = false): Promise<NewsEntry[] | null> => {
-    const {newsCollection} = await apiCall(
-      preview,
-      fragmentResolver(ALL_NEWS_QUERY),
-    );
-    return newsCollection?.items ?? null;
+    const result = await apiCall(preview, fragmentResolver(ALL_NEWS_QUERY));
+    console.log(result);
+    return result?.newsCollection?.items ?? null;
+  },
+  getNewsPage: async (
+    slug: string,
+    preview = false,
+  ): Promise<NewsEntry | null> => {
+    const result = await apiCall(preview, fragmentResolver(NEWS_PAGE), {
+      slug,
+    });
+    return result?.newsCollection?.items?.[0] ?? null;
   },
 };

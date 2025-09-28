@@ -17,29 +17,35 @@ export const HOMEPAGE_QUERY: Fragment = {
 export const ALL_NEWS_QUERY: Fragment = {
   fragment: /* GraphQL */ `
     query {
-      newsCollection {
+      newsCollection(limit: 10) {
         items {
-          sys {
-            id
-          }
-          title
-          slug
-          datePublished
-          summary
-          image {
-            sys {
-              id
+          ...${FragmentNames.News}
+        }
+      }
+    }
+  `,
+  dependencies: [FragmentNames.News],
+};
+
+export const NEWS_PAGE: Fragment = {
+  fragment: /* GraphQL */ `
+    query($slug: String!) {
+      newsCollection(where: {slug: $slug}, limit: 1) {
+        items {
+          ...${FragmentNames.News}
+          content {
+            links {
+              assets {
+                block {
+                  ...${FragmentNames.Image}
+                }
+              } 
             }
-            __typename
-            title
-            description
-            url
-            width
-            height
-            contentType
+            json
           }
         }
       }
     }
   `,
+  dependencies: [FragmentNames.News],
 };

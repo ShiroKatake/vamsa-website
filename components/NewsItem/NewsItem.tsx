@@ -7,9 +7,8 @@ import {
   StyledLink,
   StyledNewsItem,
 } from './NewsItems.styled';
-import Link from 'next/link';
 import {NewsEntry} from '@/lib/contentful/types';
-import {contentfulLoader, dateConverter} from '@/lib/contentful/utils';
+import {contentfulLoader, dateConverter} from '@/lib/contentful/utils.client';
 
 export const NewsItem = ({
   title,
@@ -22,23 +21,21 @@ export const NewsItem = ({
   return (
     <StyledNewsItem>
       {image?.url ? (
-        <Link href="#" role="presentation" tabIndex={-1}>
-          <Image
-            src={image?.url}
-            alt={image?.description ?? image?.title ?? ''}
-            width={139}
-            height={139}
-            loader={() =>
-              contentfulLoader({
-                src: image?.url,
-                width: 139,
-                height: 139,
-                fit: 'fill',
-                focus: 'center',
-              })
-            }
-          />
-        </Link>
+        <Image
+          src={image?.url}
+          alt={image?.description ?? image?.title ?? ''}
+          width={139}
+          height={139}
+          loader={() =>
+            contentfulLoader({
+              src: image?.url,
+              width: 139,
+              height: 139,
+              fit: 'fill',
+              focus: 'center',
+            })
+          }
+        />
       ) : (
         <div></div>
       )}

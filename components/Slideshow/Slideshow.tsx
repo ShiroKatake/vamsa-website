@@ -2,7 +2,7 @@
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {AssetBlock} from '@/lib/contentful/types';
 import {Navigation, Pagination, A11y, Autoplay} from 'swiper/modules';
-import {contentfulLoader} from '@/lib/contentful/utils';
+import {contentfulLoader} from '@/lib/contentful/utils.client';
 import {StyledImage} from './Slideshow.styled';
 import 'swiper/css';
 import 'swiper/css/navigation';

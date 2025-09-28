@@ -3,6 +3,7 @@ import {Fragment} from './types';
 export const enum FragmentNames {
   Image = 'Image',
   Homepage = 'Homepage',
+  News = 'News',
 }
 
 export type Fragments = {
@@ -29,6 +30,7 @@ export const fragments: Fragments = {
   },
   [FragmentNames.Homepage]: {
     fragment: /* GraphQL */ `
+      #graphql
       fragment ${FragmentNames.Homepage} on Homepage {
         entryTitle
         introText {
@@ -42,6 +44,24 @@ export const fragments: Fragments = {
         eventsSectionTitle
         activitiesSectionTitle
         socialSectionTitle
+      }
+    `,
+    dependencies: [FragmentNames.Image],
+  },
+  [FragmentNames.News]: {
+    fragment: /* GraphQL */ `
+      #graphql
+      fragment ${FragmentNames.News} on News {
+        sys {
+          id
+        }
+        title
+        slug
+        datePublished
+        summary
+        image {
+          ...${FragmentNames.Image}
+        }
       }
     `,
     dependencies: [FragmentNames.Image],
