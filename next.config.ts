@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: 'images.ctfassets.net',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        pathname: '**',
+      },
     ],
   },
   turbopack: {
