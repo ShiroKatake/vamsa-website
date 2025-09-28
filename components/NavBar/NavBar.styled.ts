@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const StyledNavBar = styled.nav`
@@ -31,21 +32,19 @@ export const StyledNavBar = styled.nav`
     padding: 4px 0 2px 0;
     border-bottom: 3px solid transparent;
   }
+`;
 
-  li.link:hover,
-  li.link.active {
-    border-bottom: 3px solid ${({theme}) => theme.colors.white};
-  }
+export const StyledLanguageSelection = styled.li`
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 0.25rem;
+`;
 
-  li.language {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
-
-    div {
-      display: flex;
-      gap: 0.25rem;
-      cursor: pointer;
-    }
+export const StyledLink = styled(Link)`
+  &:hover,
+  &:focus,
+  &.active {
+    border-bottom: 3px solid ${({theme}) => theme.colors.primary};
   }
 `;

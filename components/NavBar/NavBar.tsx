@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import {Button} from '../Button/Button';
-import {StyledNavBar} from './NavBar.styled';
+import {
+  StyledLanguageSelection,
+  StyledLink,
+  StyledNavBar,
+} from './NavBar.styled';
 import Logo from './vamsa.svg';
 import {IoLanguageSharp} from 'react-icons/io5';
 import {MdArrowDropDown} from 'react-icons/md';
@@ -25,20 +29,23 @@ export const NavBar: React.FC = () => {
           </Link>
         </li>
         {Object.entries(routes).map(([key, value]) => (
-          <li key={key} className={pathname === value ? 'link active' : 'link'}>
-            <Link href={value}>{key}</Link>
+          <li key={key}>
+            <StyledLink
+              href={value}
+              className={pathname === value ? 'link active' : 'link'}
+            >
+              {key}
+            </StyledLink>
           </li>
         ))}
         <li className="button">
           <Button href="/join">Join Us</Button>
         </li>
-        <li className="language">
-          <div>
-            <IoLanguageSharp />
-            English
-            <MdArrowDropDown />
-          </div>
-        </li>
+        <StyledLanguageSelection>
+          <IoLanguageSharp />
+          English
+          <MdArrowDropDown />
+        </StyledLanguageSelection>
       </ul>
     </StyledNavBar>
   );
