@@ -15,6 +15,15 @@ export const minifyGraphQLQuery = <T extends string>(string: T): T => {
     .trim() as T;
 };
 
+export const dateConverter = (date: string) => {
+  const newDate = new Date(date);
+  return newDate.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+};
+
 export const contentfulLoader = ({
   src,
   width,
